@@ -1,0 +1,19 @@
+{{- $name:= required "name required!" .Values.name -}}
+{{- $namespace:= required "namespace required!" .Values.namespace -}}
+{{- $port:= required "namespace required!" .Values.port -}}
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ $name }}-service"
+  namespace: {{ $namespace | quote }}
+spec:
+  selector:
+    app: {{ $name | quote }}
+    tier: frontend
+    track: stable
+  ports:
+    - name: http
+      port: {{ $port }}
+      targetPort: {{ $port }}
+  type: ClusterIP

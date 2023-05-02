@@ -1,0 +1,17 @@
+name: sevdesk-frontend
+namespace: lite
+imageName: lite/frontend:latest
+domain: lite
+
+resources:
+  limits:
+    cpu: "0.25"
+    memory: "1000Mi"
+  requests:
+    cpu: "0.25"
+    memory: "500Mi"
+
+replicas: 1
+port: 5173
+
+# Further configuration for prometheus, forecastle, liveness and readiness probes, etc.
